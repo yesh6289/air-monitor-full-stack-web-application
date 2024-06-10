@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Air Quality Awareness</title>
+    <link rel="stylesheet" href="/styles/dashboard.css">
+</head>
+<body>
+    <header>
+    <h1 class="title">AirAware: Your City's Air Quality Monitor</h1>
+    <nav>
+        <ul>
+            <li class="right"><a href="/">Home</a></li>
+            <li class="right"><a href="/login.html">Login</a></li>
+            <li class="right"><a href="/signup.html">Sign Up</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <div class="dashboard-container">
+        <marquee>Welcome to the AIR QUALITY CHECK UP of your CITY, <%= username %>!</marquee>
+        <p>Login successful!
+        <img src="/images/login_success.jpg" alt="Login Icon">
+        </p>
+        <form id="citySearchForm">
+            <label for="city">Enter City:</label></t>
+            <input type="text" id="city" name="city" required>
+            <button type="submit">Search</button>
+        </form>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pollutant</th>
+                        <th>Concentration</th>
+                    </tr>
+                </thead>
+                <tbody id="airQualityData">
+                    <% for (let i = 0; i < pollutants.length; i++) { %>
+                        <tr>
+                            <td><%= pollutants[i] %></td>
+                            <td><%= concentrations[i] %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <div class="air-quality-animation">
+                <img src="/images/air-quality.png" alt="Air Quality Animation">
+            </div>
+        </div>
+        <h3 class="<%= dangerLevel === 'DANGER' ? 'danger' : 'safe' %>">
+            <%= dangerLevel %> 
+            <img src="/images/<%= dangerLevel === 'DANGER' ? 'danger.png' : 'safe.png' %>" alt="<%= dangerLevel %> Icon">
+        </h3>
+    </div>
+    <footer>
+        <marquee><p>“Air quality awareness is key to safeguarding our health and our planet.”</p></marquee>
+        <p>&copy; 2024 Air Quality Awareness</p>
+    </footer>
+
+    <script>
+        document.getElementById('citySearchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const city = document.getElementById('city').value;
+            fetchAirQualityData(city);
+        });
+
+        function fetchAirQualityData(city) {
+            fetch('/getAirQuality?city=' + city)
+                .then(response => response.json())
+                .then(data => {
+                    const pollutants = data.pollutants;
+                    const concentrations = data.concentrations;
+                    const dangerLevel = data.dangerLevel;
+                    const airQualityTable = document.getElementById('airQualityData');
+                    airQualityTable.innerHTML = '';
+                    pollutants.forEach((pollutant, index) => {
+                        const row = document.createElement('tr');
+                        const pollutantCell = document.createElement('td');
+                        pollutantCell.textContent = pollutant;
+                        const concentrationCell = document.createElement('td');
+                        concentrationCell.textContent = concentrations[index];
+                        row.appendChild(pollutantCell);
+                        row.appendChild(concentrationCell);
+                        airQualityTable.appendChild(row);
+                    });
+                    const dangerLevelElement = document.querySelector('h3');
+                    dangerLevelElement.textContent = dangerLevel;
+                    dangerLevelElement.className = dangerLevel === 'DANGER' ? 'danger' : 'safe';
+                    dangerLevelElement.innerHTML += ` <img src="/images/${dangerLevel === 'DANGER' ? 'danger.png' : 'safe.png'}" alt="${dangerLevel} Icon">`;
+                })
+                .catch(error => console.error('Error fetching air quality data:', error));
+        }
+    </script>
+</body>
+</html>
