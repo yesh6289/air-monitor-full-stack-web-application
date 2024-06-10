@@ -1,0 +1,198 @@
+.title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+/* Header */
+header {
+    background-color: #4CAF50; /* Nature green */
+    padding: 20px 0; /* Equal padding top and bottom */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+nav ul li.right {
+    float: right;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #0056b3;
+}
+
+/* Container */
+.dashboard-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light grey */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+marquee {
+    color: black; /* Blue */
+    font-size: 24px;
+    padding: 10px; /* Padding for the marquee */
+    background-color: whitesmoke; /* Yellow */
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.dashboard-container h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.dashboard-container p {
+    color: #666;
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding-top: 19px;
+    
+}
+.dashboard-container p img{
+    width: 70px;
+    height: 70px;
+    margin-left: 10px;
+}
+
+/* Form */
+#citySearchForm {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    color: darkblue;
+    font-size: large;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+input[type="text"] {
+    width: 400px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 3px solid green;
+    border-radius: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue */
+    color: #fff;
+    border: green;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button:hover {
+    background-color: #0056b3; /* Dark blue */
+}
+
+/* Table */
+.table-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+table {
+    width: 60%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+table th {
+    background-color: aquamarine; /* Blue */
+    color: red;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.air-quality-animation img {
+    width: 500px;
+    height: auto;
+    animation: float 1s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Danger Level */
+.dashboard-container h3 {
+    font-size: 70px; /* Larger font size */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-container h3.danger {
+    color: #ff0000; /* Red */
+}
+
+.dashboard-container h3.safe {
+    color: #008000; /* Green */
+}
+
+.dashboard-container h3 img {
+    width: 70px;
+    height: 70px;
+    margin-left: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #4CAF50; /* Nature green */
+    padding: 20px 0; /* Equal padding top and bottom */
+    text-align: center;
+    color: #fff;
+    margin-top: 20px;
+}
